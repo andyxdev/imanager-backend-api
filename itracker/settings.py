@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+import os
+import django_heroku
 
 from pathlib import Path
 
@@ -25,7 +27,7 @@ SECRET_KEY = 'django-insecure-jjar_inct-+@j%qou)_%%*=o7!^8j7skswx&mm6oq!u30e!xsb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['itracker.herokuapp.com']
 
 
 # Application definition
@@ -90,10 +92,10 @@ WSGI_APPLICATION = 'itracker.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'imanager',
-        'USER': 'postgres',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',
+        'NAME': 'd62s0l434qema7',
+        'USER': 'ssneqmzvacpxsn',
+        'PASSWORD': '73cce7d04158ef815348bb95907f0e07d3a1f0e268309c06bd1e71046a29249c',
+        'HOST': 'ec2-54-165-90-230.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -134,6 +136,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = "/static"
+django_heroku.settings(locals())
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
